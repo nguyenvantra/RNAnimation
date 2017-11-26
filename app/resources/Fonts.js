@@ -8,7 +8,8 @@
  * @desc Custom font for application
 */
 
-export const Fonts = {
+export default Fonts = {
   FontRegular: 'Raleway-Regular',
   FontLight: 'Raleway-ExtraLight',
+  FontBold: 'Raleway-Bold'
 }
