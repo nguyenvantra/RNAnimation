@@ -14,7 +14,8 @@ import {
   Animated,
   Easing,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  Picker
 } from 'react-native';
 
 import Fonts from '../../resources/Fonts';
@@ -22,14 +23,17 @@ import Fonts from '../../resources/Fonts';
 export default class AttentionSeekers extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      anim: new Animated.Value(0)
-    }
+    this.anim = new Animated.Value(0);
   }
 
   componentDidMount() {
+    this.animStart();
+  }
+
+  animStart = () => {
+    this.anim.setValue(0);
     Animated.timing(
-      this.state.anim,
+      this.anim,
       {
         toValue: 1,
         duration: 1000,
@@ -38,17 +42,13 @@ export default class AttentionSeekers extends Component {
     ).start();
   }
 
-  animStart = () => {
-    this.setState({
-      anim: new Animated.Value(0)
-    });
-  }
-
   render() {
-    const translateY = this.state.anim.interpolate({
+    const translateY = this.anim.interpolate({
       inputRange: [0, 0.2, 0.4, 0.43, 0.53, 0.7, 0.8, 0.9, 1],
       outputRange: [0, 0, -30, -30, 0, -15, 0, -4, 0]
     });
+
+    const styleAnim = {transform: [{ translateY }]};
     return (
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -57,7 +57,6 @@ export default class AttentionSeekers extends Component {
               fontFamily: Fonts.FontLight,
               fontSize: 60,
               color: '#fc4a1a',
-              transform: [{ translateY }]
             }}>
             Animate
           </Animated.Text>
@@ -66,17 +65,21 @@ export default class AttentionSeekers extends Component {
           flexDirection: 'row',
           padding: 20
         }}>
-          <View style={{ flex: 1, }}>
-            <Text>Right</Text>
+          <View style={{ flex: 1, height: 50, borderColor: '#BDBDBD', borderWidth: 2, marginRight: 10 }}>
+            <Picker
+              mode="dropdown"
+              style={{ flex: 1 }} >
+              <Picker.Item label="Java" value="java" />
+              <Picker.Item label="C++" value="cplus" />
+            </Picker>
           </View>
-          <TouchableOpacity onPress={()=>this.animStart()}>
+          <TouchableOpacity onPress={() => this.animStart()}>
             <View style={{
               borderColor: '#fc4a1a',
               borderWidth: 2,
               height: 50,
               justifyContent: 'center',
               paddingHorizontal: 10,
-              borderRadius: 5
             }}>
               <Text style={{
                 fontFamily: Fonts.FontBold,
