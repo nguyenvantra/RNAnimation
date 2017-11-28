@@ -19,6 +19,7 @@ import {
 } from 'react-native';
 
 import Fonts from '../../resources/Fonts';
+import styles from './styles';
 
 export default class AttentionSeekers extends Component {
   constructor(props) {
@@ -34,35 +35,49 @@ export default class AttentionSeekers extends Component {
     this.animStart();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    this.animStart();
+  }
+
   animStart = () => {
     this.anim.setValue(0);
-    Animated.timing(
-      this.anim,
-      {
-        toValue: 1,
-        duration: 1000,
-        //easing: Easing.bezier(0.215, 0.610, 0.355, 1.000)
-      }
-    ).start();
+    switch (this.state.animSelected) {
+      case 'bounce':
+        Animated.timing(
+          this.anim,
+          {
+            toValue: 1,
+            duration: 1000,
+          }
+        ).start();
+        break;
+      default:
+        break;
+    }
+
+  }
+
+  getStyleAnim = () => {
+    switch (this.state.animSelected) {
+      case 'bounce':
+        const translateY = this.anim.interpolate({
+          inputRange: [0, 0.2, 0.4, 0.43, 0.53, 0.7, 0.8, 0.9, 1],
+          outputRange: [0, 0, -30, -30, 0, -15, 0, -4, 0]
+        });
+        return {
+          transform: [{ translateY }]
+        };
+      default:
+        break;
+    }
   }
 
   render() {
-
-    const translateY = this.anim.interpolate({
-      inputRange: [0, 0.2, 0.4, 0.43, 0.53, 0.7, 0.8, 0.9, 1],
-      outputRange: [0, 0, -30, -30, 0, -15, 0, -4, 0]
-    });
-
     return (
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Animated.Text
-            style={{
-              fontFamily: Fonts.FontLight,
-              fontSize: 60,
-              color: '#fc4a1a',
-              transform: [{ translateY }]
-            }}>
+            style={[styles.animContext, this.getStyleAnim()]}>
             Animate
           </Animated.Text>
         </View>
