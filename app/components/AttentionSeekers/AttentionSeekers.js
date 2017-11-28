@@ -125,6 +125,30 @@ export default class AttentionSeekers extends Component {
         return {
           transform: [{ scaleX }, { scaleY }]
         }
+      case 'tada':
+        const tadaScale = this.anim.interpolate({
+          inputRange: [0, 0.1, 0.2, 0.3, 0.9, 1],
+          outputRange: [1, 0.9, 0.9, 1.1, 1.1, 1]
+        });
+        const tadaRotate = this.anim.interpolate({
+          inputRange: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+          outputRange: ['0deg', '-3deg', '-3deg', '-3deg', '3deg', '-3deg', '3deg', '-3deg', '3deg', '3deg', '0deg']
+        });
+        return {
+          transform: [{ scale: tadaScale }, { rotate: tadaRotate }]
+        }
+      case 'wobble':
+        const wobbleTranslateX = this.anim.interpolate({
+          inputRange: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 1],
+          outputRange: [0, -25, 20, -15, 10, -5, 0]
+        });
+        const wobbleRotate = this.anim.interpolate({
+          inputRange: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 1],
+          outputRange: ['0deg', '-5deg', '3deg', '-3deg', '2deg', '-1deg', '0deg']
+        });
+        return {
+          transform: [{ translateX: wobbleTranslateX }, { rotate: wobbleRotate }]
+        }
       default:
         break;
     }
