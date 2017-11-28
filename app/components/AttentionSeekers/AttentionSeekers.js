@@ -41,20 +41,13 @@ export default class AttentionSeekers extends Component {
 
   animStart = () => {
     this.anim.setValue(0);
-    switch (this.state.animSelected) {
-      case 'bounce':
-        Animated.timing(
-          this.anim,
-          {
-            toValue: 1,
-            duration: 1000,
-          }
-        ).start();
-        break;
-      default:
-        break;
-    }
-
+    Animated.timing(
+      this.anim,
+      {
+        toValue: 1,
+        duration: 1000,
+      }
+    ).start();
   }
 
   getStyleAnim = () => {
@@ -67,6 +60,15 @@ export default class AttentionSeekers extends Component {
         return {
           transform: [{ translateY }]
         };
+      case 'flash':
+        const opacity = this.anim.interpolate({
+          inputRange: [0, 0.25, 0.5, 0.75, 1],
+          outputRange: [1, 0, 1, 0, 1]
+        });
+
+        return {
+          opacity: opacity
+        }
       default:
         break;
     }
