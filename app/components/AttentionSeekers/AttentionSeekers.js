@@ -105,6 +105,14 @@ export default class AttentionSeekers extends Component {
         return {
           transform: [{ translateX }]
         }
+      case 'swing':
+        const swingRotate = this.anim.interpolate({
+          inputRange: [0, 0.2, 0.4, 0.6, 0.8, 1],
+          outputRange: ['0deg','15deg','-10deg','5deg','-5deg','0deg']
+        });
+        return {
+          transform: [{rotate: swingRotate}]
+        }
       default:
         break;
     }
