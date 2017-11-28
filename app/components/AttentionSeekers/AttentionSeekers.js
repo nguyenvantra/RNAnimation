@@ -81,6 +81,22 @@ export default class AttentionSeekers extends Component {
         return {
           transform: [{ skewX }, { skewY }]
         }
+      case 'pulse':
+        const scale = this.anim.interpolate({
+          inputRange: [0, 0.5, 1],
+          outputRange: [1, 1.05, 1]
+        });
+        return {
+          transform: [{ scale }]
+        }
+      case 'rotate':
+        const rotate = this.anim.interpolate({
+          inputRange: [0, 0.25, 0.5, 0.75, 1],
+          outputRange: ['0deg','90deg','180deg','270deg','360deg']
+        });
+        return {
+          transform: [{rotate}]
+        }
       default:
         break;
     }
