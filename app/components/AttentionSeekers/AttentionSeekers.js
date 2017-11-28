@@ -108,10 +108,22 @@ export default class AttentionSeekers extends Component {
       case 'swing':
         const swingRotate = this.anim.interpolate({
           inputRange: [0, 0.2, 0.4, 0.6, 0.8, 1],
-          outputRange: ['0deg','15deg','-10deg','5deg','-5deg','0deg']
+          outputRange: ['0deg', '15deg', '-10deg', '5deg', '-5deg', '0deg']
         });
         return {
-          transform: [{rotate: swingRotate}]
+          transform: [{ rotate: swingRotate }]
+        }
+      case 'rubberBand':
+        const scaleX = this.anim.interpolate({
+          inputRange: [0, 0.3, 0.4, 0.5, 0.65, 0.75, 1],
+          outputRange: [1, 1.25, 0.75, 1.15, 0.95, 1.05, 1]
+        });
+        const scaleY = this.anim.interpolate({
+          inputRange: [0, 0.3, 0.4, 0.5, 0.65, 0.75, 1],
+          outputRange: [1, 0.75, 1.25, 0.85, 1.05, 0.95, 1]
+        });
+        return {
+          transform: [{ scaleX }, { scaleY }]
         }
       default:
         break;
