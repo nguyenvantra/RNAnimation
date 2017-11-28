@@ -23,6 +23,10 @@ import Fonts from '../../resources/Fonts';
 export default class AttentionSeekers extends Component {
   constructor(props) {
     super(props);
+    animTypes = ["bounce", "flash", "jello", "pulse", "rotate", "shake", "swing", "rubberBand", "tada", "wobble"];
+    this.state = {
+      animSelected: animTypes[0]
+    }
     this.anim = new Animated.Value(0);
   }
 
@@ -43,12 +47,12 @@ export default class AttentionSeekers extends Component {
   }
 
   render() {
+
     const translateY = this.anim.interpolate({
       inputRange: [0, 0.2, 0.4, 0.43, 0.53, 0.7, 0.8, 0.9, 1],
       outputRange: [0, 0, -30, -30, 0, -15, 0, -4, 0]
     });
 
-    const styleAnim = {transform: [{ translateY }]};
     return (
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -57,6 +61,7 @@ export default class AttentionSeekers extends Component {
               fontFamily: Fonts.FontLight,
               fontSize: 60,
               color: '#fc4a1a',
+              transform: [{ translateY }]
             }}>
             Animate
           </Animated.Text>
@@ -65,12 +70,19 @@ export default class AttentionSeekers extends Component {
           flexDirection: 'row',
           padding: 20
         }}>
-          <View style={{ flex: 1, height: 50, borderColor: '#BDBDBD', borderWidth: 2, marginRight: 10 }}>
+          <View style={{
+            flex: 1,
+            height: 50,
+            borderColor: '#BDBDBD',
+            borderWidth: 2,
+            marginRight: 10
+          }}>
             <Picker
+              selectedValue={this.state.animSelected}
+              onValueChange={value => this.setState({ animSelected: value })}
               mode="dropdown"
               style={{ flex: 1 }} >
-              <Picker.Item label="Java" value="java" />
-              <Picker.Item label="C++" value="cplus" />
+              {animTypes.map((animType, index) => <Picker.Item key={index} label={animType} value={animType} />)}
             </Picker>
           </View>
           <TouchableOpacity onPress={() => this.animStart()}>
