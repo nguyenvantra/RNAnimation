@@ -92,10 +92,18 @@ export default class AttentionSeekers extends Component {
       case 'rotate':
         const rotate = this.anim.interpolate({
           inputRange: [0, 0.25, 0.5, 0.75, 1],
-          outputRange: ['0deg','90deg','180deg','270deg','360deg']
+          outputRange: ['0deg', '90deg', '180deg', '270deg', '360deg']
         });
         return {
-          transform: [{rotate}]
+          transform: [{ rotate }]
+        }
+      case 'shake':
+        const translateX = this.anim.interpolate({
+          inputRange: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+          outputRange: [0, -10, 10, -10, 10, -10, 10, -10, 10, -10, 0]
+        });
+        return {
+          transform: [{ translateX }]
         }
       default:
         break;
