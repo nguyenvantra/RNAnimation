@@ -65,9 +65,21 @@ export default class AttentionSeekers extends Component {
           inputRange: [0, 0.25, 0.5, 0.75, 1],
           outputRange: [1, 0, 1, 0, 1]
         });
-
         return {
           opacity: opacity
+        }
+      case 'jello':
+        const skewX = this.anim.interpolate({
+          inputRange: [0, 0.111, 0.222, 0.333, 0.444, 0.555, 0.666, 0.777, 0.888, 1],
+          outputRange: ['0deg', '0deg', '-12.5deg', '6.25deg', '-3.125deg', '1.5625deg', '-0.78125deg', '0.390625deg', '-0.1953125deg', '0deg']
+        });
+
+        const skewY = this.anim.interpolate({
+          inputRange: [0, 0.111, 0.222, 0.333, 0.444, 0.555, 0.666, 0.777, 0.888, 1],
+          outputRange: ['0deg', '0deg', '-12.5deg', '6.25deg', '-3.125deg', '1.5625deg', '-0.78125deg', '0.390625deg', '-0.1953125deg', '0deg']
+        });
+        return {
+          transform: [{ skewX }, { skewY }]
         }
       default:
         break;
