@@ -9,5 +9,5 @@
 */
 
 export default Colors = {
-  textColor: '#fc4a1a'
+  animTextColor: '#fc4a1a'
 }

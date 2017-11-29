@@ -9,5 +9,5 @@
 */
 
 export default Dimens = {
-  contentFontSize: 60
+  animFontSize: 60
 }
