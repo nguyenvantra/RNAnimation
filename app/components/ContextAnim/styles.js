@@ -14,6 +14,11 @@ import Colors from '../../resources/Colors';
 import Dimens from '../../resources/Dimens';
 
 export default styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   contextAnim: {
     fontFamily: Fonts.FontLight,
     fontSize: Dimens.animFontSize,

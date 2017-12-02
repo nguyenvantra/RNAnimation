@@ -9,7 +9,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, Animated } from 'react-native';
+import { View, Text, Animated } from 'react-native';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
@@ -26,9 +26,11 @@ export default class ContextAnim extends Component {
 
   render() {
     return (
-      <Text style={[styles.contextAnim, ...this.props.style]}>
-        {this.props.content}
-      </Text>
+      <View style={styles.container}>
+        <Animated.Text style={[styles.contextAnim, ...this.props.style]}>
+          {this.props.content}
+        </Animated.Text>
+      </View>
     );
   }
 }
