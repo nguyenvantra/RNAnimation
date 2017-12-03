@@ -12,6 +12,17 @@ import { StyleSheet } from 'react-native';
 
 export default styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    flexDirection: 'column'
+  },
+  containerTextAnim: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  contextAnim: {
+    fontFamily: Fonts.FontLight,
+    fontSize: Dimens.animFontSize,
+    color: Colors.animTextColor,
   }
 });
