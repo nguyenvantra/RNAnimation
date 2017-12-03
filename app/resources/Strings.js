@@ -9,5 +9,20 @@
 */
 
 export default Strings = {
-  contentTextAnim: 'Animate'
+  contentTextAnim: 'Animate',
+  contentButton: 'Animate it',
+  attentionSeekers: 'Attention Seekers',
+  bouncingEntrances: 'Bouncing Entrances',
+  bouncingExits: 'Bouncing Exits',
+  fadingEntrances: 'Fading Entrances',
+  fadingExits: 'FadingExits',
+  flippers: 'Flippers',
+  lightspeed: 'Lightspeed',
+  rotatingEntrances: 'Rotating Entrances',
+  rotatingExits: 'Rotating Exits',
+  specials: 'Specials',
+  zoomingEntrances: 'Zooming Entrances',
+  zoomingExits: 'Zooming Exits',
+  slidingEntrances: 'Sliding Entrances',
+  slidingExits: 'SlidingExits'
 }
