@@ -22,8 +22,8 @@ export default class ControlAnim extends Component {
     data: PropTypes.array,
     value: PropTypes.string,
     label: PropTypes.string,
-    onSelect: PropTypes.func,
-    onPress: PropTypes.func
+    onChangeText: PropTypes.func,
+    onClick: PropTypes.func
   }
 
   //Default props of component
@@ -37,13 +37,13 @@ export default class ControlAnim extends Component {
         <View style={{ flex: 1, marginRight: 20 }}>
           <Dropdown
             value={this.props.value}
-            onChangeText={this.props.onSelect}
+            onChangeText={this.props.onChangeText}
             label={this.props.label}
             data={this.props.data}
             itemCount={3}
           />
         </View>
-        <TouchableOpacity onPress={() => { this.props.onPress }}>
+        <TouchableOpacity onPress={this.props.onClick}>
           <View style={styles.containerButton}>
             <Text style={styles.textButton}>{Strings.contentButton}</Text>
           </View>
