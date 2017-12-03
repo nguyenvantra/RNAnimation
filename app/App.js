@@ -12,13 +12,13 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import Bounce from './components/AttentionSeekers';
+import AttentionSeekersScreen from './screen/AttentionSeekersScreen';
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Bounce />
+        <AttentionSeekersScreen />
       </View>
     );
   }
